@@ -1,3 +1,19 @@
+[![](https://img.shields.io/pypi/pyversions/django-cache-cleaner.svg?color=3776AB&logo=python&logoColor=white)](https://www.python.org/)
+[![](https://img.shields.io/pypi/djversions/django-cache-cleaner?color=0C4B33&logo=django&logoColor=white&label=django)](https://www.djangoproject.com/)
+
+[![](https://img.shields.io/pypi/v/django-cache-cleaner.svg?color=blue&logo=pypi&logoColor=white)](https://pypi.org/project/django-cache-cleaner/)
+[![](https://static.pepy.tech/badge/django-cache-cleaner/month)](https://pepy.tech/project/django-cache-cleaner)
+[![](https://img.shields.io/github/stars/fabiocaccamo/django-cache-cleaner?logo=github&style=flat)](https://github.com/fabiocaccamo/django-cache-cleaner/stargazers)
+[![](https://img.shields.io/pypi/l/django-cache-cleaner.svg?color=blue)](https://github.com/fabiocaccamo/django-cache-cleaner/blob/main/LICENSE.txt)
+
+[![](https://results.pre-commit.ci/badge/github/fabiocaccamo/django-cache-cleaner/main.svg)](https://results.pre-commit.ci/latest/github/fabiocaccamo/django-cache-cleaner/main)
+[![](https://img.shields.io/github/actions/workflow/status/fabiocaccamo/django-cache-cleaner/test-package.yml?branch=main&label=build&logo=github)](https://github.com/fabiocaccamo/django-cache-cleaner)
+[![](https://img.shields.io/codecov/c/gh/fabiocaccamo/django-cache-cleaner?logo=codecov)](https://codecov.io/gh/fabiocaccamo/django-cache-cleaner)
+<!-- [![](https://img.shields.io/codacy/grade/{id}?logo=codacy)](https://www.codacy.com/app/fabiocaccamo/django-cache-cleaner) -->
+[![](https://img.shields.io/codeclimate/maintainability/fabiocaccamo/django-cache-cleaner?logo=code-climate)](https://codeclimate.com/github/fabiocaccamo/django-cache-cleaner/)
+[![](https://img.shields.io/badge/code%20style-black-000000.svg?logo=python&logoColor=black)](https://github.com/psf/black)
+[![](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+
 # django-cache-cleaner
 clear the entire cache or individual caches easily using the admin panel or management command.
 

@@ -30,6 +30,7 @@ To clear caches using the admin panel:
 -   ➡️ Navigate to the `Cache Cleaner / Caches`
 -   ✔️ Check the caches you want to clear
 -   🧹 Select "Clear selected caches" from the actions menu
+-   ✨ Done :)
 
 ### Command
 This package doesn't need any setting.

@@ -1,0 +1,111 @@
+name: Test package
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+
+  prepare:
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create matrix
+        uses: fabiocaccamo/create-matrix-action@v4
+        id: create_matrix
+        with:
+          matrix: |
+            python-version {3.8}, django-version {3.2, 4.0, 4.1, 4.2}, database {sqlite}
+            python-version {3.9}, django-version {3.2, 4.0, 4.1, 4.2}, database {sqlite}
+            python-version {3.10}, django-version {3.2, 4.0, 4.1, 4.2, 5.0}, database {sqlite}
+            python-version {3.11}, django-version {4.1, 4.2, 5.0}, database {sqlite}
+            python-version {3.12}, django-version {4.2, 5.0}, database {sqlite}
+
+    outputs:
+      matrix: ${{ steps.create_matrix.outputs.matrix }}
+
+
+  lint:
+
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
+        cache: 'pip'
+
+    - name: Install tools needed
+      run: |
+        sudo apt install gettext
+        python -m pip install --upgrade pip
+        pip install tox
+
+    - name: Check migrations
+      run: |
+        tox -e migrations
+
+    - name: Check translations
+      run: |
+        tox -e translations
+
+
+  test:
+
+    needs: [prepare]
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include: ${{fromJson(needs.prepare.outputs.matrix)}}
+
+    steps:
+
+    - uses: actions/checkout@v4
+
+    - name: Install psycopg2 prerequisites
+      run: sudo apt install libpq-dev
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v5
+      with:
+        python-version: ${{ matrix.python-version }}
+        cache: 'pip'
+
+    - name: Upgrade pip version
+      run: |
+        pip install pip --upgrade
+
+    - name: Install django
+      run: |
+        pip install "Django == ${{ matrix.django-version }}.*"
+
+    - name: Install requirements
+      run: |
+        pip install -r requirements.txt
+        pip install -r requirements-test.txt
+
+    - name: Run pre-commit
+      run: |
+        pre-commit run --all-files --show-diff-on-failure --verbose
+
+    - name: Run tests
+      run: |
+        coverage run --append --source=cache_cleaner runtests.py
+        coverage report --show-missing
+        coverage xml -o ./coverage.xml
+
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v4
+      with:
+        fail_ci_if_error: false
+        files: ./coverage.xml
+        flags: unittests
+        verbose: true

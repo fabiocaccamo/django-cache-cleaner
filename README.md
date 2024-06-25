@@ -27,9 +27,9 @@ clear the entire cache or individual caches easily using the admin panel or mana
 
 ### Admin
 To clear caches using the admin panel:
--   Navigate to the Cache Cleaner / Caches
--   Check the caches you want to clear
--   Select "Clear selected caches" from the actions menu
+-   ➡️ Navigate to the `Cache Cleaner / Caches`
+-   ✔️ Check the caches you want to clear
+-   🧹 Select "Clear selected caches" from the actions menu
 
 ### Command
 This package doesn't need any setting.

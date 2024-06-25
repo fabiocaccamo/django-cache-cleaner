@@ -1,0 +1,99 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "django-cache-cleaner"
+description = "clear the entire cache or individual caches easily using the admin panel or management command."
+authors = [
+    { name = "Fabio Caccamo", email = "fabio.caccamo@gmail.com" },
+]
+keywords = [
+    "django",
+    "cache",
+    "caches",
+    "cleaner",
+    "clear",
+    "clean",
+    "cleanup",
+    "command",
+    "management",
+    "purge",
+]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Web Environment",
+    "Framework :: Django",
+    "Framework :: Django :: 3.2",
+    "Framework :: Django :: 4.0",
+    "Framework :: Django :: 4.1",
+    "Framework :: Django :: 4.2",
+    "Framework :: Django :: 5.0",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Build Tools",
+]
+dependencies = [
+]
+dynamic = ["version"]
+maintainers = [
+    { name = "Fabio Caccamo", email = "fabio.caccamo@gmail.com" },
+]
+
+[project.readme]
+file = "README.md"
+content-type = "text/markdown"
+
+[project.license]
+file = "LICENSE.txt"
+content-type = "text/plain"
+
+[project.urls]
+Homepage = "https://github.com/fabiocaccamo/django-cache-cleaner"
+Download = "https://github.com/fabiocaccamo/django-cache-cleaner/releases"
+Documentation = "https://github.com/fabiocaccamo/django-cache-cleaner#readme"
+Issues = "https://github.com/fabiocaccamo/django-cache-cleaner/issues"
+Funding = "https://github.com/sponsors/fabiocaccamo/"
+Twitter = "https://twitter.com/fabiocaccamo"
+
+[tool.black]
+line-length = 88
+include = '\.pyi?$'
+exclude = '''
+/(
+    \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | _build
+  | buck-out
+  | build
+  | dist
+  | venv
+)/
+'''
+
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint]
+ignore = []
+select = ["B", "B9", "C", "E", "F", "W"]
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10
+
+[tool.setuptools.packages.find]
+include = ["cache_cleaner*"]
+
+[tool.setuptools.dynamic.version]
+attr = "cache_cleaner.metadata.__version__"

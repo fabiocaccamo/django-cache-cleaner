@@ -55,6 +55,15 @@ DATABASES = {
 
 DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
+USE_I18N = True
+LANGUAGES = (
+    ("en", "English"),
+    ("it", "Italiano"),
+)
+LANGUAGE_CODE = "en"
+
+LOCALE_PATHS = (os.path.join(BASE_DIR, "cache_cleaner/locale/"),)
+
 MEDIA_ROOT = os.path.join(BASE_DIR, "cache-cleaner/public/media/")
 MEDIA_URL = "/media/"
 

@@ -40,6 +40,24 @@ class Command(BaseCommand):
             help="Clear all caches",
         )
 
+    def _clear_all_caches(self):
+        for cache_name in caches:
+            caches[cache_name].clear()
+            self._stdout_success(f"Cleared cache '{cache_name}'!")
+        self._stdout_success("Cleared all caches!")
+
+    def _clear_default_cache(self):
+        cache.clear()
+        self._stdout_success("Cleared default cache!")
+
+    def _clear_individual_caches(self, cache_names):
+        for cache_name in cache_names:
+            if cache_name in caches:
+                caches[cache_name].clear()
+                self._stdout_success(f"Cleared cache '{cache_name}'!")
+            else:
+                self._stdout_error(f"Cache '{cache_name}' does not exist!")
+
     def handle(self, *args, **options):
         """
         Handles the cache clearing based on the provided arguments.
@@ -50,20 +68,9 @@ class Command(BaseCommand):
         """
         cache_names = options["cache_names"]
         clear_all = options["clear_all"]
-
         if clear_all:
-            for cache_name in caches:
-                caches[cache_name].clear()
-                self._stdout_success(f"Cleared cache '{cache_name}'!")
-            self._stdout_success("Cleared all caches!")
-
+            self._clear_all_caches()
         elif cache_names:
-            for cache_name in cache_names:
-                if cache_name in caches:
-                    caches[cache_name].clear()
-                    self._stdout_success(f"Cleared cache '{cache_name}'!")
-                else:
-                    self._stdout_error(f"Cache '{cache_name}' does not exist!")
+            self._clear_individual_caches(cache_names)
         else:
-            cache.clear()
-            self._stdout_success("Cleared default cache!")
+            self._clear_default_cache()

@@ -1,0 +1,4 @@
+include LICENSE.txt
+include README.md
+recursive-include cache_cleaner *
+recursive-exclude * *.pyc __pycache__ .DS_Store

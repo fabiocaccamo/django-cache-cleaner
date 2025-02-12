@@ -1,10 +1,11 @@
-from django.contrib.admin.sites import AdminSite
-from django.test import TestCase, RequestFactory
-from django.test import Client
-from django.contrib.auth.models import User
 from unittest.mock import patch
-from cache_cleaner.models import Cache
+
+from django.contrib.admin.sites import AdminSite
+from django.contrib.auth.models import User
+from django.test import Client, RequestFactory, TestCase
+
 from cache_cleaner.admin import CacheAdmin
+from cache_cleaner.models import Cache
 
 
 class CacheAdminTest(TestCase):

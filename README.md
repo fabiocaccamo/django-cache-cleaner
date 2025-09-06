@@ -10,7 +10,6 @@
 [![](https://img.shields.io/github/actions/workflow/status/fabiocaccamo/django-cache-cleaner/test-package.yml?branch=main&label=build&logo=github)](https://github.com/fabiocaccamo/django-cache-cleaner)
 [![](https://img.shields.io/codecov/c/gh/fabiocaccamo/django-cache-cleaner?logo=codecov)](https://codecov.io/gh/fabiocaccamo/django-cache-cleaner)
 <!-- [![](https://img.shields.io/codacy/grade/{id}?logo=codacy)](https://www.codacy.com/app/fabiocaccamo/django-cache-cleaner) -->
-[![](https://img.shields.io/codeclimate/maintainability/fabiocaccamo/django-cache-cleaner?logo=code-climate)](https://codeclimate.com/github/fabiocaccamo/django-cache-cleaner/)
 [![](https://img.shields.io/badge/code%20style-black-000000.svg?logo=python&logoColor=black)](https://github.com/psf/black)
 [![](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 

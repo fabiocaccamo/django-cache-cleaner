@@ -37,8 +37,7 @@ jobs:
 
       - name: Build Package
         run: |
-          pip install pip --upgrade
-          pip install build
+          pip install "build == 1.4.*"
           python -m build
 
       - name: Publish on PyPI

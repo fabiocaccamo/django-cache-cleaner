@@ -23,8 +23,8 @@ jobs:
         id: create_matrix
         with:
           matrix: |
-            python-version {3.10}, django-version {4.0, 4.1, 4.2, 5.0, 5.1, 5.2}, database {sqlite}
-            python-version {3.11}, django-version {4.1, 4.2, 5.0, 5.1, 5.2}, database {sqlite}
+            python-version {3.10}, django-version {4.2, 5.0, 5.1, 5.2}, database {sqlite}
+            python-version {3.11}, django-version {4.2, 5.0, 5.1, 5.2}, database {sqlite}
             python-version {3.12}, django-version {4.2, 5.0, 5.1, 5.2, 6.0}, database {sqlite}
             python-version {3.13}, django-version {5.1, 5.2, 6.0}, database {sqlite}
             python-version {3.14}, django-version {5.2, 6.0}, database {sqlite}
@@ -49,8 +49,7 @@ jobs:
     - name: Install tools needed
       run: |
         sudo apt install gettext
-        python -m pip install --upgrade pip
-        pip install tox
+        pip install "tox == 4.32.*"
 
     - name: Check migrations
       run: |
@@ -82,10 +81,6 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
         cache: 'pip'
-
-    - name: Upgrade pip version
-      run: |
-        pip install pip --upgrade
 
     - name: Install django
       run: |
